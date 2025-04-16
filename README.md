@@ -98,10 +98,63 @@ Dados específicos para cenários de cálculo de créditos:
 - PostgreSQL
 - Dependências listadas em requirements.txt
 
-### Variáveis de Ambiente
+### Configuração Passo a Passo
+
+1. **Clone o repositório:**
+   ```
+   git clone https://github.com/seu-usuario/api-calculadora-carbono.git
+   cd api-calculadora-carbono
+   ```
+
+2. **Crie e ative um ambiente virtual:**
+
+   No Windows (PowerShell):
+   ```powershell
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+
+   No Linux/macOS:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Instale as dependências:**
+   ```
+   pip install -r requirements.txt
+   ```
+
+4. **Configure as variáveis de ambiente:**
+   - Copie o arquivo `.env.example` para `.env`:
+     ```
+     copy .env.example .env  # Windows
+     cp .env.example .env    # Linux/macOS
+     ```
+   - Edite o arquivo `.env` com suas configurações:
+     - `DATABASE_URL`: URL de conexão com o banco de dados PostgreSQL
+     - `PGDATABASE`, `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`: Credenciais do PostgreSQL
+     - `FLASK_SECRET_KEY` e `SESSION_SECRET`: Chaves secretas para segurança da aplicação
+
+5. **Inicialize o banco de dados:**
+   ```
+   python init_db.py
+   ```
+
+6. **Execute a aplicação:**
+   ```
+   python run.py
+   ```
+
+7. **Acesse a documentação da API:**
+   - Navegue para `http://localhost:5000/api/docs` em seu navegador
+
+### Variáveis de Ambiente Necessárias
+Todas as variáveis de ambiente estão descritas no arquivo `.env.example`. As principais são:
 - `DATABASE_URL`: URL de conexão com o banco de dados
 - `FLASK_ENV`: Ambiente de execução (development/production)
 - `FLASK_SECRET_KEY`: Chave secreta para sessões Flask
+- `SESSION_SECRET`: Chave para segurança de sessões
 
 ## Exemplos de Uso
 
